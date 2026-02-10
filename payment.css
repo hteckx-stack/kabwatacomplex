@@ -1,0 +1,48 @@
+/* Externalized styles for payment.html */
+:root{
+  --bg1:#0f172a; --bg2:#07103a; --card:#ffffff; --muted:#6b7280;
+  --accent:#0f172a; --primary:#0b76ef; --success:#16a34a; --glass:rgba(255,255,255,0.06)
+}
+*{box-sizing:border-box}
+html,body{block-size:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;color:var(--accent);display:flex;align-items:center;justify-content:center;background:var(--bg1);overflow:hidden}
+
+/* animated background */
+.bg{position:fixed;inset:0;z-index:-2}
+.bg::before{content:'';position:absolute;inset:-20%;background:linear-gradient(120deg,#07103a 0%,#0b3b79 30%,#0b76ef 60%,#7dd3fc 100%);filter:blur(40px) contrast(120%);transform:scale(1.05);animation:move 12s linear infinite;opacity:0.95}
+.bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 10% 20%,rgba(255,255,255,0.03),transparent 10%),radial-gradient(circle at 90% 80%,rgba(255,255,255,0.02),transparent 20%)}
+@keyframes move{0%{transform:translateX(-10%) scale(1.05)}50%{transform:translateX(10%) scale(1.06)}100%{transform:translateX(-10%) scale(1.05)}}
+
+.wrap{inline-size:100%;max-inline-size:820px;padding:28px}
+.panel{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.94));border-radius:16px;box-shadow:0 10px 40px rgba(2,6,23,0.25);padding:22px}
+h1{font-size:20px;margin:0 0 8px}
+p.lead{margin:0 0 18px;color:var(--muted);font-size:14px}
+
+.list{display:grid;gap:12px}
+.item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(11,119,239,0.03), rgba(11,119,239,0.01));border:1px solid rgba(11,119,239,0.06)}
+
+.logo{inline-size:60px;block-size:60px;border-radius:10px;flex:0 0 60px;background:var(--glass);display:flex;align-items:center;justify-content:center}
+.logo svg{inline-size:36px;block-size:36px}
+.logo-img{inline-size:36px;block-size:36px;object-fit:contain;display:block}
+.svg-fallback{inline-size:36px;block-size:36px;display:block}
+.meta{flex:1;min-inline-size:0}
+.name{font-weight:700;font-size:15px}
+.acct{font-size:13px;color:var(--muted);margin-block-start:2px}
+.number{font-size:18px;font-weight:800;margin-block-start:8px;letter-spacing:0.6px;user-select:text}
+
+.actions{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;border:0;background:#f1f5f9;color:var(--accent);cursor:pointer;font-weight:700}
+.btn svg{inline-size:16px;block-size:16px}
+.btn.copy{background:linear-gradient(90deg,#fff,#f8fafc);box-shadow:0 2px 6px rgba(2,6,23,0.06)}
+.btn.primary{background:linear-gradient(90deg,var(--primary),#0b5fd8);color:#fff}
+.btn:active{transform:translateY(1px)}
+.btn.disabled{opacity:0.6;cursor:not-allowed}
+
+.copied{font-size:13px;color:var(--success);margin-inline-start:6px;opacity:0;transform:translateY(-6px);transition:all .18s}
+.copied.show{opacity:1;transform:translateY(0)}
+
+/* nicer copy button state */
+.btn.copy .label{display:inline-block}
+.btn.copy.copied{background:linear-gradient(90deg,#e6ffef,#ddfff0);color:var(--success);box-shadow:0 4px 14px rgba(22,163,74,0.12)}
+
+@media (max-inline-size:560px){.wrap{padding:16px}.item{flex-direction:row;gap:12px}.logo{inline-size:52px;block-size:52px}.name{font-size:14px}.number{font-size:16px}}
